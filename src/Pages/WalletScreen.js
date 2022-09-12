@@ -33,11 +33,13 @@ export default function WalletScreen() {
                         <p>Nova entrada</p>
                     </button>
                 </Link>
-                <button>
-                    <img src={minus} />
-                    <p>Nova
-                        saída</p>
-                </button>
+                <Link to="/withdraw" style={{ textDecoration: 'none' }}>
+                    <button>
+                        <img src={minus} />
+                        <p>Nova
+                            saída</p>
+                    </button>
+                </Link>
             </ButtonsContainer>
 
 
