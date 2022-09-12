@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import styled from 'styled-components';
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 export default function SignUpForm() {
     const [email, setEmail] = useState("");
@@ -8,10 +10,32 @@ export default function SignUpForm() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [name, setName] = useState("");
 
+    const navigate = useNavigate();
+
+    function signUp(event) {
+        event.preventDefault();
+
+        const promise = axios.post("http://localhost:5000/SignUp",
+        {
+            name: name,
+            email: email,
+            password: password,
+            confirmPassword: confirmPassword
+        });
+
+        promise.catch(() => {
+            alert("Algo deu errado");
+        });
+
+        promise.then(() => {
+            navigate("/");
+        });
+    }
+
     return (
         <>
             <CredentialsContainer>
-                <form>
+                <form onSubmit={signUp}>
                     <input type="text" value={name} placeholder="Nome"
                         onChange={v => setName(v.target.value)} required />
 
