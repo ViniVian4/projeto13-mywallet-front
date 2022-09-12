@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 import UserContext from "../contexts/UserContext";
 
-export default function DepositScreen() {
+export default function WithdrawScreen() {
     const [value, setValue] = useState("");
     const [description, setDescription] = useState("");
 
@@ -14,11 +14,11 @@ export default function DepositScreen() {
 
     const navigate = useNavigate();
 
-    function deposit(event) {
+    function withdraw(event) {
         event.preventDefault();
 
         const promise = axios.post(
-            "http://localhost:5000/deposit",
+            "http://localhost:5000/withdraw",
             {
                 value: value,
                 description: description
@@ -35,11 +35,11 @@ export default function DepositScreen() {
     return (
         <Container>
             <Header>
-                <p>Nova Entrada</p>
+                <p>Nova Saída</p>
             </Header>
 
             <DepositForm>
-                <form onSubmit={deposit}>
+                <form onSubmit={withdraw}>
                     <input type="number" placeholder="Valor" value={value}
                         onChange={v => setValue(v.target.value)} required />
 
@@ -47,7 +47,7 @@ export default function DepositScreen() {
                         onChange={v => setDescription(v.target.value)} required />
 
                     <button type="submit">
-                        <p>Salvar entrada</p>
+                        <p>Salvar saída</p>
                     </button>
                 </form>
             </DepositForm>

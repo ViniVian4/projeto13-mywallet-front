@@ -9,6 +9,7 @@ import LoginScreen from "./Pages/LoginScreen";
 import SignUpScreen from "./Pages/SignUpScreen";
 import WalletScreen from "./Pages/WalletScreen";
 import DepositScreen from "./Pages/DepositScreen";
+import WithdrawScreen from "./Pages/WithdrawScreen";
 
 export default function App() {
     const [userData, setUserData] = useState("");
@@ -29,8 +30,16 @@ export default function App() {
                         <UserContext.Provider value={{ userData }} >
                             <WalletScreen />
                         </UserContext.Provider>} />
-                    
-                        <Route path="/deposit" element={<DepositScreen />} />
+
+                    <Route path="/deposit" element={
+                        <UserContext.Provider value={{ userData }} >
+                            <DepositScreen />
+                        </UserContext.Provider>} />
+
+                    <Route path="/withdraw" element={
+                        <UserContext.Provider value={{ userData }} >
+                            <WithdrawScreen />
+                        </UserContext.Provider>} />
                 </Routes>
             </BrowserRouter>
 
