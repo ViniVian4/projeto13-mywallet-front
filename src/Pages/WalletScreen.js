@@ -27,13 +27,13 @@ export default function WalletScreen() {
             </WalletContainer>
 
             <ButtonsContainer>
-                <Link to="/deposit" style={{ textDecoration: 'none' }}>
+                <Link to="/deposit" style={{ textDecoration: 'none', width: "48%", backgroundColor: "#A328D6", borderRadius: "10px"  }}>
                     <button>
                         <img src={plus} />
                         <p>Nova entrada</p>
                     </button>
                 </Link>
-                <Link to="/withdraw" style={{ textDecoration: 'none' }}>
+                <Link to="/withdraw" style={{ textDecoration: 'none', width: "48%", backgroundColor: "#A328D6", borderRadius: "10px" }}>
                     <button>
                         <img src={minus} />
                         <p>Nova
@@ -73,7 +73,7 @@ const WalletContainer = styled.div`
     width: 85%;
     max-width: 500px;
     min-width: 300px;
-    height: 450px;
+    height: 570px;
 
     margin-top: 22px;
     margin-bottom: 15px;
@@ -115,7 +115,7 @@ const ButtonsContainer = styled.div`
         justify-content: space-around;
         
         min-width: 145px;
-        width: 48%;
+        width: 100%;
 
         height: 100px;
 
