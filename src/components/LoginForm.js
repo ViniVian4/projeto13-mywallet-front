@@ -54,6 +54,7 @@ const CredentialsContainer = styled.div`
 
     input::placeholder {
         color: #000000;
+        font-family: 'Raleway', sans-serif;
     }
 
     button {
