@@ -1,24 +1,23 @@
 import React from "react";
 import styled from 'styled-components';
 import { Link, useNavigate } from "react-router-dom";
+import SignUpForm from "../components/SignUpForm";
 
-import LoginForm from "../components/LoginForm";
-
-export default function LoginScreen() {    
+export default function SignUpScreen() {
     return (
         <Container>
 
             <h1>MyWallet</h1>
 
-            <LoginForm />
+            <SignUpForm />
 
-            <Link to="/signup" style={{ textDecoration: 'none' }}>
-                    <SignLink>Primeira vez? Cadastre-se!</SignLink>
+            <Link to="/" style={{ textDecoration: 'none' }}>
+                    <SignLink>Já tem uma conta? Entre agora!</SignLink>
                 </Link>
 
         </Container>
-    );
-};
+    )
+}
 
 const Container = styled.div`
     display: flex;

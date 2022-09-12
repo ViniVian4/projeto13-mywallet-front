@@ -4,6 +4,7 @@ import { useState } from "react";
 import styled from 'styled-components';
 
 import LoginScreen from "./Pages/LoginScreen";
+import SignUpScreen from "./Pages/SignUpScreen";
 
 export default function App() {
     return (
@@ -11,6 +12,8 @@ export default function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<LoginScreen/>} />
+
+                    <Route path="/SignUp" element={<SignUpScreen/>} />
                 </Routes>
             </BrowserRouter>
 
