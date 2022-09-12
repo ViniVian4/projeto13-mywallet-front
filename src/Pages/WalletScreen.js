@@ -27,10 +27,12 @@ export default function WalletScreen() {
             </WalletContainer>
 
             <ButtonsContainer>
-                <button>
-                    <img src={plus} />
-                    <p>Nova entrada</p>
-                </button>
+                <Link to="/deposit" style={{ textDecoration: 'none' }}>
+                    <button>
+                        <img src={plus} />
+                        <p>Nova entrada</p>
+                    </button>
+                </Link>
                 <button>
                     <img src={minus} />
                     <p>Nova
