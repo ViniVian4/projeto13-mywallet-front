@@ -15,7 +15,7 @@ export default function WalletScreen() {
 
     const [loading, setLoading] = useState(true);
     const [deposits, setDeposits] = useState([]);
-    
+
     let balance = 0;
 
     useEffect(() => {
@@ -33,7 +33,7 @@ export default function WalletScreen() {
             setDeposits(response.data.depositsArray);
             setLoading(false);
         });
-    }, []);
+    }, [deposits]);
 
     return (
         <Container>
@@ -46,39 +46,41 @@ export default function WalletScreen() {
 
             <WalletContainer>
                 {
-                    loading ?
-                        (
-                            <NoRecords><p>Não há registros de
-                                entrada ou saída</p></NoRecords>
-                        )
-                        :
-                        (
-                            <>
-                                <DepositsContainer>
-                                    {
-                                        deposits.map(deposit => {
-                                            if (!deposit.isDeposit){
-                                                balance -= deposit.value;
-                                            }
-                                            else{
-                                                balance += deposit.value;
-                                            }
-                                            return (
-                                            <DepositLine>
-                                                <div>
-                                                    <Date>{deposit.date}</Date>
-                                                    <Description>{deposit.description}</Description>
-                                                </div>
-                                                <Value color={deposit.isDeposit ? "#03AC00" : "#C70000"}>{deposit.value.toFixed(2)}</Value>
+                    loading ? (<></>) : (
+                        !deposits.length ?
+                            (
+                                <NoRecords><p>Não há registros de
+                                    entrada ou saída</p></NoRecords>
+                            )
+                            :
+                            (
+                                <>
+                                    <DepositsContainer>
+                                        {
+                                            deposits.map(deposit => {
+                                                if (!deposit.isDeposit) {
+                                                    balance -= deposit.value;
+                                                }
+                                                else {
+                                                    balance += deposit.value;
+                                                }
+                                                return (
+                                                    <DepositLine>
+                                                        <div>
+                                                            <Date>{deposit.date}</Date>
+                                                            <Description>{deposit.description}</Description>
+                                                        </div>
+                                                        <Value color={deposit.isDeposit ? "#03AC00" : "#C70000"}>{deposit.value.toFixed(2)}</Value>
 
-                                            </DepositLine>
-                                        );})
-                                    }
-                                </DepositsContainer>
+                                                    </DepositLine>
+                                                );
+                                            })
+                                        }
+                                    </DepositsContainer>
 
-                                <DepositLine><h2>SALDO</h2> <Balance color={balance>=0 ? "#03AC00" : "#C70000"}>{balance}</Balance></DepositLine>
-                            </>
-                        )
+                                    <DepositLine><h2>SALDO</h2> <Balance color={balance >= 0 ? "#03AC00" : "#C70000"}>{balance.toFixed(2)}</Balance></DepositLine>
+                                </>
+                            ))
                 }
             </WalletContainer>
 
@@ -130,7 +132,7 @@ const Header = styled.div`
 const WalletContainer = styled.div`
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     flex-direction: column;
     
     width: 85%;
@@ -160,6 +162,8 @@ const NoRecords = styled.div`
 
     width: 100%;
     height: 100%;
+
+    margin-top: 230px;
 
     p {
         width: 60%;
