@@ -29,7 +29,7 @@ export default function LoginForm() {
 
             setUserData({ token, name });
 
-            navigate('/SignUp');
+            navigate('/wallet');
         })
     }
     

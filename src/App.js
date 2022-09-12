@@ -7,11 +7,10 @@ import UserContext from "./contexts/UserContext";
 
 import LoginScreen from "./Pages/LoginScreen";
 import SignUpScreen from "./Pages/SignUpScreen";
+import WalletScreen from "./Pages/WalletScreen";
 
 export default function App() {
     const [userData, setUserData] = useState("");
-
-    console.log(userData);
 
     return (
         <Container>
@@ -24,6 +23,11 @@ export default function App() {
                     } />
 
                     <Route path="/SignUp" element={<SignUpScreen />} />
+
+                    <Route path="/wallet" element={
+                        <UserContext.Provider value={{ userData }} >
+                            <WalletScreen />
+                        </UserContext.Provider>} />
                 </Routes>
             </BrowserRouter>
 
