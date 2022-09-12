@@ -1,15 +1,42 @@
 import React from "react";
 import { useState, useContext } from "react";
 import styled from 'styled-components';
+import axios from 'axios';
+import UserContext from "../contexts/UserContext";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginForm() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const { setUserData } = useContext(UserContext);
+
+    const navigate = useNavigate();
+
+    function login (event) {
+        event.preventDefault();
+
+        const promise = axios.post("http://localhost:5000/",
+        {
+            email: email,
+            password: password
+        });
+
+        promise.catch(() => {alert("Algo deu errado");});
+
+        promise.then((response) => {
+            const { token, name } = response.data;
+
+            setUserData({ token, name });
+
+            navigate('/SignUp');
+        })
+    }
     
     return (
         <>
             <CredentialsContainer>
-                <form>
+                <form onSubmit={login}>
                     <input type="email" value={email} placeholder="E-mail" 
                     onChange={v => setEmail(v.target.value)} required />
 
