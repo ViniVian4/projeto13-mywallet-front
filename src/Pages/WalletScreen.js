@@ -237,7 +237,7 @@ const Date = styled.p`
 const Description = styled.p`
     color: #000000;
     word-break: break-all;
-    width: 75%;
+    width: 90%;
 `;
 
 const Value = styled.p`
